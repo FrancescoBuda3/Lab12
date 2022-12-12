@@ -16,10 +16,9 @@ namespace Collections
         public bool AddFollowedUser(string group, TUser user)
         {
             //throw new NotImplementedException("TODO add user to the provided group. Return false if the user was already in the group");
-            List<TUser> groupList;
-            _followed.TryGetValue(group, out groupList);
-            if(groupList.Contains(user)) return false;
-            groupList.Add(user);
+            if(!_followed.ContainsKey(group)) _followed.Add(group, new List<TUser>());
+            if(_followed[group].Contains(user)) return false;
+            _followed[group].Add(user);
             return true;
         }
 
@@ -36,7 +35,8 @@ namespace Collections
         public ICollection<TUser> GetFollowedUsersInGroup(string group)
         {
             List<TUser> ret = new();
-            _followed.TryGetValue(group, out ret);
+            if(!_followed.ContainsKey(group)) ret = new List<TUser>();
+            else ret = _followed[group];
             return ret;
         }
     }
