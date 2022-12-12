@@ -8,7 +8,6 @@ namespace Collections
     {
         public SocialNetworkUser(string fullName, string username, uint? age) : base(fullName, username, age)
         {
-            throw new NotImplementedException("TODO is there anything to do here?");
         }
 
         public bool AddFollowedUser(string group, TUser user)
@@ -20,7 +19,8 @@ namespace Collections
         {
             get
             {
-                throw new NotImplementedException("TODO construct and return the list of all users followed by the current users, in all groups");
+                //throw new NotImplementedException("TODO construct and return the list of all users followed by the current users, in all groups");
+                return FollowedUsers;
             }
         }
 
